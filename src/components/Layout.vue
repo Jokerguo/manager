@@ -2,6 +2,7 @@
   <div class="nav-wrapper">
     <div class="nav-content">
       <slot/>
+
     </div>
     <Nav/>
   </div>
