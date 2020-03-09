@@ -22,6 +22,7 @@
 </script>
 
 <style lang="scss" scoped>
+  @import "~@/assets/style/helper.scss";
   nav {
     display: flex;
     flex-direction: row;
@@ -34,7 +35,7 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      box-shadow: 0 0 2px rgba(0,0,0,0.2);
+      @extend %outerShadow;
 
       > .icon{
         width: 30px;
