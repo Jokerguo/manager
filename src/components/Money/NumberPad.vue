@@ -13,7 +13,7 @@
       <button @click="inputContent">7</button>
       <button @click="inputContent">8</button>
       <button @click="inputContent">9</button>
-      <button class="ok">OK</button>
+      <button @click="ok" class="ok">OK</button>
       <button @click="inputContent" class="zero">0</button>
       <button @click="inputContent">.</button>
     </div>
@@ -46,15 +46,26 @@
     }
 
     remove() {
-      if(this.output.length === 1){
-        this.output = '0'
-      }else{
-        this.output = this.output.slice(0,-1)
+      if (this.output.length === 1) {
+        this.output = '0';
+      } else {
+        this.output = this.output.slice(0, -1);
       }
     }
 
     clear() {
-      this.output = '0'
+      this.output = '0';
+    }
+
+    ok() {
+      this.$emit('update:value', this.output);
+      if(this.output === '0'){
+        return
+      }else{
+        this.$emit('submit', this.output);
+        this.output = '0';
+      }
+
     }
 
   }

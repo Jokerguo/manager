@@ -28,15 +28,16 @@
       } else {
         this.selectTags.push(tag);
       }
+      this.$emit('update:value',this.selectTags)
     }
-
-    create(){
+    create() {
       const name = window.prompt('请输入标签名');
       console.log(name);
-      if(name === ''){
+      if (name === '') {
         window.alert('标签名不能为空');
-      }else if(this.dataSource){
-        this.$emit('update:dataSource',[...this.dataSource,name])
+        return;
+      } else if (this.dataSource) {
+        this.$emit('update:dataSource', [...this.dataSource, name]);
       }
     }
   }
