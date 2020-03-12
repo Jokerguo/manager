@@ -1,7 +1,8 @@
 <template>
   <Layout>
-    <div class="tags"  >
-      <router-link class="tag" v-for="tag in tags" :key="tag.id" :to="`/labels/edit/${tag.id}`"><span>{{tag.name}}</span>
+    <div class="tags">
+      <router-link class="tag" v-for="tag in tags" :key="tag.id" :to="`/labels/edit/${tag.id}`">
+        <span>{{tag.name}}</span>
         <Icon name="right"/>
       </router-link>
     </div>
@@ -32,8 +33,8 @@
         const message = tagListModel.create(name);
         if (message === 'duplicated') {
           window.alert('标签名重复');
-        }else{
-          window.alert('添加成功')
+        } else {
+          window.alert('添加成功');
         }
       }
     }
@@ -61,6 +62,7 @@
       }
     }
   }
+
   .create {
     background: #767676;
     color: white;
@@ -68,6 +70,7 @@
     border: none;
     height: 40px;
     padding: 0 16px;
+
     &-wrapper {
       text-align: center;
       padding: 16px;
