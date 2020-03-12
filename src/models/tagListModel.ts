@@ -1,8 +1,6 @@
 const localStorageKeyName = 'tagList';
-type Data  = {
-  id: string;
-  name: string;
-}
+
+
 type TagListModel = {
   data: Data[];
   fetch: () => Data[];

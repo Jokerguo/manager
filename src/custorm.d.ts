@@ -5,3 +5,8 @@ type RecordItem ={
   amounts: number;
   createdAt?: Date;
 }
+
+type Data  = {
+  id: string;
+  name: string;
+}
