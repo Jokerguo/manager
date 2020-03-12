@@ -5,8 +5,8 @@
         <Icon name="right"/>
       </router-link>
     </div>
-    <div class="create">
-      <button @click="createTag">新增标签</button>
+    <div class="create-wrapper">
+      <Button class="create" @click="createTag">新增标签</Button>
     </div>
 
     <div></div>
@@ -17,9 +17,12 @@
   import Vue from 'vue';
   import tagListModel from '@/models/tagListModel';
   import {Component} from 'vue-property-decorator';
+  import Button from '@/components/Button.vue';
 
   tagListModel.fetch();
-  @Component
+  @Component({
+    components: {Button}
+  })
   export default class Labels extends Vue {
     tags = tagListModel.data;
 
@@ -58,17 +61,17 @@
       }
     }
   }
-
   .create {
-    font-size: 17px;
-    text-align: center;
-    padding-top: 44px;
-
-    > button {
-      padding: 5px 4px;
-      border: none;
-      border-radius: 10%;
-      background: #767676;
+    background: #767676;
+    color: white;
+    border-radius: 4px;
+    border: none;
+    height: 40px;
+    padding: 0 16px;
+    &-wrapper {
+      text-align: center;
+      padding: 16px;
+      margin-top: 44-16px;
     }
   }
 </style>

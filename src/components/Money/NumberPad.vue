@@ -81,6 +81,7 @@
       padding: 9px 18px;
       text-align: right;
       min-height: 72px;
+      background: white;
       @extend %innerShadow;
     }
 

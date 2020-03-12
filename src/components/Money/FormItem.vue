@@ -1,6 +1,6 @@
 <template>
   <div>
-    <label class="notes">
+    <label class="formItem">
       <span class="name">{{fileName}}</span>
       <input type="text" :placeholder="this.placeHolder" v-model="value">
     </label>
@@ -12,7 +12,7 @@
   import {Component, Prop, Watch} from 'vue-property-decorator';
 
 @Component
-  export default class Notes extends Vue {
+  export default class FromItem extends Vue {
     value = '';
     @Prop({required:true}) fileName!: string;
     @Prop() placeHolder?: string;
@@ -24,8 +24,7 @@
 </script>
 
 <style lang="scss" scoped>
-  .notes {
-    background: #f5f5f5;
+  .formItem {
     display: flex;
     font-size: 14px;
     padding: 0 16px;
@@ -36,6 +35,7 @@
     }
 
     input {
+      height: 40px;
       padding: 16px 0;
       flex-grow: 1;
       background: transparent;
