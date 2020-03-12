@@ -2,7 +2,7 @@
   <div>
     <label class="formItem">
       <span class="name">{{fileName}}</span>
-      <input type="text" :placeholder="this.placeHolder" v-model="value">
+      <input type="text" :placeholder="this.placeHolder" :value="value" @input="onUpdateValue">
     </label>
   </div>
 </template>
@@ -13,7 +13,7 @@
 
 @Component
   export default class FromItem extends Vue {
-    value = '';
+    @Prop({default : ''}) value!: string;
     @Prop({required:true}) fileName!: string;
     @Prop() placeHolder?: string;
     @Watch('value')
