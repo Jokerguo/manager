@@ -7,6 +7,7 @@ const recordListModel = {
     const newRecord = clone(record);
     newRecord.createdAt = new Date();
     this.data.push(newRecord);
+    this.save();
   },
   fetch() {
     return JSON.parse(window.localStorage.getItem(localStorageKeyName) || '[]') as RecordItem[];

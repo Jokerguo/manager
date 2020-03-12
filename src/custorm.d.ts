@@ -21,9 +21,12 @@ type TagListModel = {
 }
 
 interface Window {
-    tagList: Data[];
-    createTag: (name: string) => void;
-    removeTag: (id: string) => boolean;
-    updateTag: TagListModel['update'];
-    findTag: (id: string) => Data;
+  recordList: RecordItem[];
+  createRecord: (record: RecordItem) => void;
+  tagList: Data[];
+  createTag: (name: string) => void;
+  removeTag: (id: string) => boolean;
+  updateTag: TagListModel['update'];
+  findTag: (id: string) => Data;
+
 }
