@@ -39,9 +39,11 @@
         this.$router.replace('/404');
       }
     }
-    // updateTag(value: string){
-    //   // tagListModel.update(value: string);
-    // }
+    updateTag(name: string){
+      if(this.tag) {
+        tagListModel.update(this.tag.id, name);
+      }
+    }
   }
 </script>
 
