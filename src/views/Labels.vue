@@ -1,12 +1,12 @@
 <template>
   <Layout>
-    <ol class="tags">
-      <li><span>衣</span>
+    <ol class="tags" v-for="tag in tags" :key="tag">
+      <li><span>{{tag}}</span>
         <Icon name="right"/>
       </li>
     </ol>
     <div class="create">
-      <button>新增标签</button>
+      <button @click="createTag">新增标签</button>
     </div>
 
     <div></div>
@@ -18,10 +18,22 @@
   import tagListModel from '@/models/tagListModel';
   import {Component} from 'vue-property-decorator';
 
+  tagListModel.fetch();
   @Component
   export default class Labels extends Vue {
-    tags = tagListModel.fetch();
+    tags = tagListModel.data;
 
+    createTag() {
+      const name = window.prompt('请输入标签名');
+      if (name) {
+        const message = tagListModel.create(name);
+        if (message === 'duplicated') {
+          window.alert('标签名重复');
+        }else{
+          window.alert('添加成功')
+        }
+      }
+    }
   }
 </script>
 
