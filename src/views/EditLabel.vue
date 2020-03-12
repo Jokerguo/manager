@@ -5,7 +5,10 @@
       <span>编辑标签</span>
     </div>
     <div class="from-wrapper">
-      <FromItem :value="tag.name" class="title" file-name="标签名" place-holder="请输入标签名"/>
+      <FromItem class="title" file-name="标签名" place-holder="请输入标签名"
+                :value="tag.name"
+                @update:value="updateTag"
+      />
     </div>
     <div class="button-wrapper">
       <Button>删除标签</Button>
@@ -36,6 +39,9 @@
         this.$router.replace('/404');
       }
     }
+    // updateTag(value: string){
+    //   // tagListModel.update(value: string);
+    // }
   }
 </script>
 

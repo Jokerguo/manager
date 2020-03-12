@@ -5,8 +5,9 @@
     <div class="from-wrapper">
       <FromItem file-name="备注" @update:value="onUpdateNotes" place-holder="请输入备注"/>
     </div>
-    <Tags :data-source.sync="tag" @update:value="onUpdateTags"/>
+    <Tags :data-source.sync="tags" @update:value="onUpdateTags"/>
   </Layout>
+
 </template>
 
 <script lang="ts">
@@ -19,16 +20,16 @@
   import recordListModel from '@/models/recordListModel.ts';
   import tagListModel from '@/models/tagListModel';
 
-  const tagList = tagListModel.fetch();
-
-  @Component({
-    components: {Tags, FromItem, Types, NumberPad},
-  })
-  export default class Money extends Vue {
-    tag = tagList;
-    recordList = recordListModel.fetch();
+    const recordList = recordListModel.fetch();
+    const tagList = tagListModel.fetch();
+    @Component({
+      components: {Tags, FromItem, Types, NumberPad}
+    })
+    export default class Money extends Vue {
+    tags = tagList;
+    recordList: RecordItem[] = recordList;
     record: RecordItem = {
-      tags: [], notes: '', type: '-', amounts: 0
+      tags: [], notes: '', type: '-', amount: 0
     };
 
     onUpdateTags(value: string[]) {
@@ -40,11 +41,11 @@
     }
 
     onUpdateAmounts(value: string) {
-      this.record.amounts = parseFloat(value);
+      this.record.amount = parseFloat(value);
     }
 
     saveRecord() {
-      const newRecord = recordListModel.clone(this.recordList);
+      const newRecord = recordListModel.clone(this.record);
       newRecord.createdAt = new Date();
       this.recordList.push(newRecord);
     }

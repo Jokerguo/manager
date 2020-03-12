@@ -2,7 +2,7 @@
   <div>
     <label class="formItem">
       <span class="name">{{fileName}}</span>
-      <input type="text" :placeholder="this.placeHolder" :value="value" @input="onUpdateValue">
+      <input type="text" :placeholder="this.placeHolder" :value="value" @input="onUpdateValue($event.target.value)">
     </label>
   </div>
 </template>
@@ -13,12 +13,13 @@
 
 @Component
   export default class FromItem extends Vue {
-    @Prop({default : ''}) value!: string;
+    @Prop({default : ''}) readonly value!: string;
     @Prop({required:true}) fileName!: string;
     @Prop() placeHolder?: string;
     @Watch('value')
-    onUpdateValue(){
-      this.$emit('update:value',this.value)
+    onUpdateValue(value: string){
+      this.$emit('update:value',value);
+
     }
   }
 </script>
