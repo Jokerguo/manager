@@ -42,7 +42,8 @@
     saveRecord(){
       const newRecord: RecordItem = recordListModel.clone(this.recordList);
       newRecord.createdAt = new Date();
-       this.recordList.push(newRecord);
+      console.log(1);
+      this.recordList.push(newRecord);
     }
 
     @Watch('recordList')
