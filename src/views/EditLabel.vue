@@ -1,17 +1,17 @@
 <template>
   <layout>
     <div class="navBar">
-      <Icon class="leftIcon" name="left"/>
+      <Icon class="leftIcon" name="left" @click="goBack"/>
       <span>编辑标签</span>
     </div>
     <div class="from-wrapper">
       <FromItem class="title" file-name="标签名" place-holder="请输入标签名"
                 :value="tag.name"
-                @update:value="updateTag"
+                @update:value="update"
       />
     </div>
     <div class="button-wrapper">
-      <Button>删除标签</Button>
+      <Button @click="remove">删除标签</Button>
     </div>
   </layout>
 </template>
@@ -39,10 +39,21 @@
         this.$router.replace('/404');
       }
     }
-    updateTag(name: string){
+    update(name: string){
       if(this.tag) {
         tagListModel.update(this.tag.id, name);
       }
+    }
+
+    remove(){
+      if(this.tag) {
+        tagListModel.remove(this.tag.id);
+        this.$router.push('/labels')
+      }
+    }
+
+    goBack(){
+      this.$router.back();
     }
   }
 </script>
