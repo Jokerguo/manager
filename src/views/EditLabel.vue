@@ -26,31 +26,33 @@
     components: {Button, FromItem},
   })
   export default class EditLabel extends Vue {
-    get tag(){
-      return this.$store.state.currentTag
+    get tag() {
+      return this.$store.state.currentTag;
     }
+
     created() {
-      this.$store.commit('setCurrentTag',this.$route.params.id);
-      if(!this.tag){
+      this.$store.commit('fetchTags');
+      this.$store.commit('setCurrentTag', this.$route.params.id);
+      if (!this.tag) {
         this.$router.replace('/404');
       }
     }
-    update(name: string){
-      if(this.tag) {
-        // store.updateTag(this.tag.id,name);
+
+    update(name: string) {
+      if (this.tag) {
+        this.$store.commit('updateTag',{id: this.tag.id ,name : name});
+        console.log(name);
       }
     }
 
-    remove(){
-      if(this.tag) {
-        return
-        // if(store.removeTag(this.tag.id)){
-        //   this.$router.back();
-        // }
+    remove() {
+      if (this.tag) {
+        console.log(1);
+        this.$store.commit('removeTag',this.tag.id)
       }
     }
 
-    goBack(){
+    goBack() {
       this.$router.back();
     }
   }
@@ -77,7 +79,8 @@
     margin-top: 8px;
     padding: 0 12px;
   }
-  .button-wrapper{
+
+  .button-wrapper {
     text-align: center;
     padding: 16px;
     margin-top: 44-16px;
