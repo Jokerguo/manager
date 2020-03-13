@@ -3,7 +3,7 @@ import createId from '@/lib/createId';
 const localStorageKeyName = 'tagList';
 
 const tagStore = {
-  tagList: [] as Data[],
+  tagList: [] as Tag[],
   fetchTags() {
     this.tagList = JSON.parse(window.localStorage.getItem(localStorageKeyName) || '[]');
     return this.tagList;

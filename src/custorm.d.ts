@@ -6,14 +6,14 @@ type RecordItem = {
   createdAt?: Date;
 }
 
-type Data = {
+type Tag = {
   id: string;
   name: string;
 }
 
 type TagListModel = {
-  data: Data[];
-  fetch: () => Data[];
+  data: Tag[];
+  fetch: () => Tag[];
   create: (name: string) => 'success' | 'duplicated';
   update: (id: string, name: string) => 'success' | 'duplicated' | 'not found';
   remove: (id: string) => boolean;
@@ -24,10 +24,10 @@ interface Window {
   store: {
     recordList: RecordItem[];
     createRecord: (record: RecordItem) => void;
-    tagList: Data[];
+    tagList: Tag[];
     createTag: (name: string) => void;
     removeTag: (id: string) => boolean;
     updateTag: TagListModel['update'];
-    findTag: (id: string) => Data;
+    findTag: (id: string) => Tag;
   };
 }
