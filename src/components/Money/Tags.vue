@@ -9,7 +9,6 @@
           @click="toggle(tag)">{{tag.name}}
       </li>
     </ul>
-    {{selectedTags}}
   </div>
 
 </template>
@@ -36,15 +35,13 @@
         this.selectedTags.splice(index, 1);
       } else {
         this.selectedTags.push(tag);
-        //TODO
-        // this.$store.commit('update');
       }
       this.$emit('update:value', this.selectedTags);
     }
 
     create() {
       const name = window.prompt('请输入标签名');
-      if (!name) {return window.alert('标签名不能为空');}
+      if (!name) {return;}
       this.$store.commit('createTag', name);
     }
 

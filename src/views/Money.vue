@@ -3,11 +3,10 @@
     <NumberPad @update:value="onUpdateAmounts" @submit="saveRecord"/>
     <Tabs :data-source="recordTypeList" :value.sync="record.type"/>
     <div class="from-wrapper">
-      <FromItem file-name="备注" @update:value="onUpdateNotes" place-holder="请输入备注"/>
+      <FromItem file-name="备注" :value.sync="record.notes" place-holder="请输入备注"/>
     </div>
-    <Tags/>
+    <Tags @update:value="record.tags=$event"/>
   </Layout>
-
 </template>
 
 <script lang="ts">
@@ -36,16 +35,19 @@
       this.$store.commit('fetchRecords');
     }
 
-    onUpdateNotes(value: string) {
-      this.record.notes = value;
-    }
-
     onUpdateAmounts(value: string) {
       this.record.amount = parseFloat(value);
     }
 
     saveRecord() {
+      if(!this.record.tags || this.record.tags.length === 0){
+        return window.alert('请选择一个标签');
+      }
       this.$store.commit('createRecord', this.record);
+      if(this.$store.state.createRecordError === null){
+        window.alert('已保存');
+        this.record.notes = '';
+      }
     }
 
   }
