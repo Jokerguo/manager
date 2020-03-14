@@ -69,7 +69,6 @@
           result.push({title: dayjs(newList[i].createdAt).format('YYYY-M-D'), items: [current]})
         }
       }
-      console.log(result);
       result.forEach(group =>{
         group.total = group.items.reduce((sum,item) => sum+item.amount,0)
       });

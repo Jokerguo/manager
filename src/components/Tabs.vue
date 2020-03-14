@@ -32,7 +32,6 @@
     background: #c4c4c4;
     display: flex;
     font-size: 24px;
-
     &-item {
       width: 50%;
       height: 64px;

@@ -35,6 +35,7 @@
       this.$store.commit('fetchRecords');
     }
 
+
     onUpdateAmounts(value: string) {
       this.record.amount = parseFloat(value);
     }
