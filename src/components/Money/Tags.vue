@@ -9,6 +9,7 @@
           @click="toggle(tag)">{{tag.name}}
       </li>
     </ul>
+    {{selectedTags}}
   </div>
 
 </template>
@@ -25,7 +26,7 @@
       return this.$store.state.tagList;
     }
 
-    created() {
+    beforeCreate() {
       this.$store.commit('fetchTags');
     }
 
@@ -35,6 +36,8 @@
         this.selectedTags.splice(index, 1);
       } else {
         this.selectedTags.push(tag);
+        //TODO
+        // this.$store.commit('update');
       }
       this.$emit('update:value', this.selectedTags);
     }

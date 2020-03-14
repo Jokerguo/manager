@@ -13,6 +13,10 @@ const store = new Vuex.Store({
     currentTag : undefined
   } as RootState,
   mutations: {
+    //TODO
+    // update(){
+    //   console.log(1);
+    // },
     fetchRecords(state) {
       state.recordList = JSON.parse(window.localStorage.getItem('recordList') || '[]') as RecordItem[];
     },

@@ -41,13 +41,11 @@
     update(name: string) {
       if (this.tag) {
         this.$store.commit('updateTag',{id: this.tag.id ,name : name});
-        console.log(name);
       }
     }
 
     remove() {
       if (this.tag) {
-        console.log(1);
         this.$store.commit('removeTag',this.tag.id)
       }
     }
